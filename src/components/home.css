@@ -1,0 +1,14 @@
+.home-body {
+    padding: 30px;
+    background-color: lightgrey;
+    margin: 20px;
+    align-content: center;
+}
+
+p {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}

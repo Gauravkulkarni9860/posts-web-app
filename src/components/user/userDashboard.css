@@ -1,0 +1,20 @@
+.head {
+    padding : 20px;
+}
+
+.content {
+    border: solid 1px darkgray;
+    width: 100%;
+}
+
+.content-header {
+    border: solid 1px darkgray;
+    background-color: lightgrey;
+    padding:10px;   
+}
+
+p {
+    font-family: sans-serif serif;
+    font-weight: lighter;
+    margin: 30px;
+}
