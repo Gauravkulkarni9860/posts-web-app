@@ -1,0 +1,12 @@
+.form-body {
+    border: darkgray 1px solid;
+    padding: 10px;
+    text-align: left;
+}
+
+.form-header {
+    border: solid 1px darkgray;
+    background-color: #f7f7f7;
+    text-align: left;
+    
+}
