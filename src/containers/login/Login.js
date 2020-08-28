@@ -8,24 +8,21 @@ class Login extends Component {
     constructor(props) {
         super(props)
         let loggedIn = false
-        let register = false
+        
         this.state = {
             userName : '',
             password : '',
             loggedIn,
-            register
+            
         }
         this.onChange = this.onChange.bind(this)
         this.loginUser = this.loginUser.bind(this)
         this.openRegister = this.openRegister.bind(this)
-        
     }
 
     openRegister(e) {
         e.preventDefault();
-        this.setState({
-            register:true
-        })
+        this.props.history.push("/register");
     }
 
     onChange(e) {
@@ -41,31 +38,40 @@ class Login extends Component {
         const { userName, password } = this.state;
         
         let data = localStorage.getItem('user');
-        if(data === undefined){
-            alert("Error");
+
+        if(data === null || data === undefined){
+            alert("Account not found! Please register yourself");
+            console.log(data)
         }
         else {
             data = JSON.parse(data);
             let i ;
+            let accountFound = false;
             for( i = 0; i < data.length; i++){
                 if(data[i].email === userName){
+                    accountFound = true;
                     break
                 }
             }
             
-            if(data[i].email === userName && data[i].pass === password ) {
-                this.setState({
-                    loggedIn: true,
-                    
-                })
-                localStorage.setItem('token',JSON.stringify(data[i].name));    
+            if ( accountFound ) {
+                if(data[i].email === userName && data[i].pass === password ) {
+                    this.setState({
+                        loggedIn: true,
+                    })
+                    localStorage.setItem('token',JSON.stringify(data[i].name));    
+                }
+                else{
+                    alert("Login failed! Please try again");
+                    this.setState({
+                        userName:'',
+                        password:''
+                    })
+                }
             }
-            else{
-                alert("Login failed");
-                this.setState({
-                    userName:'',
-                    password:''
-                })
+            else {
+                alert("Account not found! Please register yourself");
+                this.props.history.replace("/register");
             }
         }
     }
@@ -77,11 +83,7 @@ class Login extends Component {
         if(this.state.loggedIn) {
             return <Redirect to="/userDashboard" /> 
         }
-
-        if(this.state.register){
-            return <Redirect to="/register"/>
-        }
-
+        
         return (
             <Container style={{marginTop:'40px'}}>
                 <Row>

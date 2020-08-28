@@ -6,11 +6,8 @@ class Posts extends Component {
     render () {
 
         let posts = localStorage.getItem('post');
-        if(posts === null) {
-            posts = <p style={{color:'red'}}>Sorry! No post created yet.... Please create post</p>
-        }
-        else {
-            posts = JSON.parse(posts);
+        posts = JSON.parse(posts);
+            posts.reverse();
             
             posts = posts.map((post,index) =>{
                 return (
@@ -22,7 +19,6 @@ class Posts extends Component {
                     /> 
                 );
             });
-        }
 
         return (
             <div className="Posts">

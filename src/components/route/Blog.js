@@ -6,13 +6,14 @@ import Posts from '../../containers/postsContainer/posts/Posts';
 import Register from '../../containers/register/Register'
 import NewPost from '../../containers/postsContainer/newPost/NewPost';
 import UserDashboard from '../../containers/userDashboard/UserDashboard';
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
 
 
 
 class Blog extends Component {
     render () {
         return (
+            
             <div>
                 <header className="Blog">
                     <nav>
